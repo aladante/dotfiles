@@ -1,0 +1,21 @@
+README.md
+chezmoi.key.age
+{{- if .server }}
+.ssh
+{{- end }}
+{{- if .work }}
+.ssh/known_hosts_managed
+{{- end }}
+{{- if (or .mobile .server) }}
+.config/foot
+.config/i3status
+.config/mutt
+.config/sway
+{{- end }}
+{{- if not .mobile }}
+.termux
+.hushlogin
+{{- end }}
+{{- if not .home }}
+vnc_server.sh
+{{- end }}

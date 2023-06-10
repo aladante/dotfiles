@@ -1,0 +1,23 @@
+# 
+.pyc
+*.pyc
+
+# Environments
+venv/
+
+# google cloud connection authentication json
+*secret*.json
+*secret*.env
+
+.vscode
+
+# Java
+jdt.ls-java-project
+.metadata
+
+# awsume cacha
+.awsume/cache/*
+
+# Basenet custom rc
+
+

@@ -1,0 +1,42 @@
+#!/bin/bash
+
+#Set default shell
+export SHELL=/bin/zsh
+# Set default editor
+export EDITOR=nvim
+# Set default browser
+export BROWSER=firefox
+# Set cache to RAM disk
+export XDG_CACHE_HOME=/dev/shm
+# Set config directory
+export XDG_CONFIG_HOME=$HOME/.config
+# Set data directory
+export XDG_DATA_HOME=$HOME/.local/share/
+
+# Set theme
+export THEME=DARK
+
+xrdb -load ~/.Xresources &
+
+function environment() {
+    xset -dpms 	#Turn off DPMS
+    # set mouse speed
+    setxkbmap us
+}
+
+function services() {
+    start-pulseaudio-x11 &
+    dunst &
+}
+
+function main() {
+    environment
+    services
+    windowManager
+}
+
+function windowManager() {
+    exec bspwm
+}
+
+main

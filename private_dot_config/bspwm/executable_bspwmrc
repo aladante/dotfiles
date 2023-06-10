@@ -1,0 +1,45 @@
+#! /bin/sh
+#Configs side of monitors BSPWM
+SECOND_MONITOR_SIDE="left"
+
+#Get Monitors
+PRINCIPAL=$(xrandr | grep -w "primary" | awk '{print $1}')
+SECOND_MONITOR=$(xrandr | grep -w "connected" | awk '{i++}i==2'| awk '{print $1}')
+
+Configure Monitors
+if [ "$(xrandr | grep -sw 'connected' | wc -l)" = "2" ]; then
+	xrandr --output $SECOND_MONITOR --rotate left
+	bspc monitor $(bspc query -M | sed -n 1p) -d 1 2 3 4 5
+	bspc monitor $(bspc query -M | sed -n 2p) -d 6 7 8 9 0
+	#Set Monitors Side and output 
+	xrandr --output $SECOND_MONITOR --$SECOND_MONITOR_SIDE-of $PRINCIPAL 
+else
+	xrandr -s 1920x1200
+	bspc monitor -d 1 2 3 4 5 6 7 8 9 0
+fi
+
+# Set background
+feh --bg-center $HOME/dotfiles/extra/background.png &
+
+# launch polybar_launch
+sxhkd &
+start_xidlehook &
+picom -f & 
+polybar_launch & 
+
+bspc config border_width    	1
+bspc config window_gap		    14
+bspc config split_radio			1
+bspcconfig borderless_monocle	true
+bspc config gapple_monocle		true
+
+# Windows assignation to workspaces
+bspc rule -a Pavucontrol desktop='^0' follow=on
+
+
+bspc rule -a Spotify desktop='^0'
+bspc rule -a discord desktop='^9'
+bspc rule -a Slack desktop='^9'
+bspc rule -a Signal desktop='^9'
+bspc rule -a TelegramDesktop desktop='^9'
+

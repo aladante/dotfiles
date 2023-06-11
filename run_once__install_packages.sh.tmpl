@@ -44,7 +44,6 @@ sudo apt-get install -y \
     python3 \
     python3-pip \
     python3-setuptools \
-    python3-pynvim \
     python3-venv \
     neofetch \
     zsh \
@@ -62,6 +61,7 @@ if ! command -v nvim >/dev/null; then
     make CMAKE_BUILD_TYPE=Release
     sudo make install
     popd
+    sudo apt-get install -y python3-pynvim
 fi
 
 function setup_asdf() {

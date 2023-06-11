@@ -2,25 +2,33 @@
 
 {{ if eq .chezmoi.os "linux" -}}
 
-sudo apt-get update -y
-sudo apt-get upgrade -y
-sudo apt-get dist-upgrade -y
+set -o pipefail
 
-sudo apt-get install -y\
+sudo apt-get update -y
+
+sudo apt-get install -y \
+    software-properties-common \
+    firmware-linux-nonfree \
+    python3 \
+    python3-pip \
+    python3-setuptools \
+    python3-pynvim \
+    python3-venv \
+    neofetch \
+    ripgrep \
+    zsh \
+    thermald \
+    tmux
+
+sudo apt-get install -y \
     zathura \
-    kitty \
     feh \
-    curl \
+    kitty \
+    htop \
     imagemagick \
     scrot \
-    neofetch \
-    vim \
-    zsh \
-    tmux \
     xinit \
-    ripgrep \
     rofi \
-    htop \
     xclip \
     i3lock \
     sxhkd \
@@ -29,19 +37,27 @@ sudo apt-get install -y\
     libxcb-screensaver0-dev \
     pulseaudio \
     cargo \
-    thermald \
-    firmware-linux-nonfree \
     bspwm \
     picom \
     polybar \
     lm-sensors \
     xbacklight \
     gocryptfs \
-    gocryptfs \
     fwupd \
     mpv \
-    python3-pip \
-    python3-venv \
     tor
+
+sudo apt-get upgrade -y
+
+sudo chsh -s "$(which zsh)" "$(whoami)"
+
+if ! command -v nvim >/dev/null; then
+    sudo apt install -y ninja-build gettext cmake unzip curl cmake build-essential
+    git clone -b release-0.9 https://github.com/neovim/neovim || true
+    pushd neovim
+    make CMAKE_BUILD_TYPE=Release
+    sudo make install
+    popd
+fi
 
 {{ end -}}

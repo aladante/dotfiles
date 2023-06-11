@@ -11,4 +11,5 @@ bin
 .config/polybar
 .config/rofi
 .config/sxhkd
+.config/mimeapps.list
 {{- end }}

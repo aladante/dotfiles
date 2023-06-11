@@ -1,23 +1,5 @@
-#!{{ lookPath "bash" }}
-
-set -o pipefail
-
-sudo apt-get update -y
-
-sudo apt-get install -y \
-    software-properties-common \
-    python3 \
-    python3-pip \
-    python3-setuptools \
-    python3-pynvim \
-    python3-venv \
-    neofetch \
-    zsh \
-    ripgrep \
-    thermald \
-    tmux
-
-{{- if eq .type "home" }}
+{{ if eq .type "home" -}}
+#!/bin/bash
 
 sudo apt-get install -y \
     zathura \
@@ -45,7 +27,26 @@ sudo apt-get install -y \
     mpv \
     tor
 
-{{- end }}
+{{ end -}}
+#!/bin/bash
+
+set -o pipefail
+
+sudo apt-get update -y
+
+sudo apt-get install -y \
+    software-properties-common \
+    python3 \
+    python3-pip \
+    python3-setuptools \
+    python3-pynvim \
+    python3-venv \
+    neofetch \
+    zsh \
+    ripgrep \
+    thermald \
+    tmux
+
 
 
 sudo apt-get upgrade -y

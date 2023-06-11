@@ -16,8 +16,10 @@ sudo apt-get install -y \
     python3-venv \
     neofetch \
     ripgrep \
+    cargo \
     zsh \
     thermald \
+    git \
     tmux
 
 sudo apt-get install -y \
@@ -51,6 +53,7 @@ sudo apt-get upgrade -y
 
 sudo chsh -s "$(which zsh)" "$(whoami)"
 
+# nvim
 if ! command -v nvim >/dev/null; then
     sudo apt install -y ninja-build gettext cmake unzip curl cmake build-essential
     git clone -b release-0.9 https://github.com/neovim/neovim || true
@@ -59,5 +62,8 @@ if ! command -v nvim >/dev/null; then
     sudo make install
     popd
 fi
-
+# ripgrep
+if ! command -v rg >/dev/null; then
+    cargo install ripgrep
+fi
 {{ end -}}

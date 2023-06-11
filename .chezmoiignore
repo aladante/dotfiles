@@ -1,5 +1,5 @@
 README.md
-{{- if (or .mobile .server) }}
+{{- if (or .server) }}
 .ideavimrc
 .xinitrc
 .Xresources

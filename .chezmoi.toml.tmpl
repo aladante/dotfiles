@@ -1,17 +1,4 @@
-{{- $home := false -}}
-{{- if (and (eq .chezmoi.os "linux") (eq .chezmoi.osRelease.id "debian") (or (eq .chezmoi.hostname "hella"))) -}}
-{{-   $home = true -}}
-{{- end -}}
-
-{{- $work := false -}}
-{{- if (and (eq .chezmoi.os "linux") (eq .chezmoi.osRelease.id "debian") (eq .chezmoi.hostname "NL1-LIN-002")) -}}
-{{-   $work = true -}}
-{{- end -}}
-
-{{- $server := false -}}
-{{- if (and (eq .chezmoi.os "linux") (eq .chezmoi.osRelease.id "ubuntu") (ne .chezmoi.hostname "hyperion") (ne .chezmoi.hostname "surface-pro")) -}}
-{{-   $server = true -}}
-{{- end -}}
+{{ $type := promptStringOnce . "type of machine" " home OR server " }}
 
 [git]
     autoAdd = true
@@ -24,6 +11,4 @@
 [data]
     name = "Jan"
     email = "ching@chilla.ching"
-    home = {{ $home }}
-    work = {{ $work }}
-    server = {{ $server }}
+    type = {{ $type | quote }}

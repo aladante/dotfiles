@@ -1,7 +1,5 @@
 #!/bin/bash
 
-{{- if eq .chezmoi.os "linux" -}}
-
 set -o pipefail
 
 sudo apt-get update -y
@@ -15,11 +13,12 @@ sudo apt-get install -y \
     python3-pynvim \
     python3-venv \
     neofetch \
-    cargo \
     zsh \
     ripgrep \
     thermald \
     tmux
+
+{{- if eq .type "home" -}}
 
 sudo apt-get install -y \
     zathura \
@@ -48,9 +47,22 @@ sudo apt-get install -y \
     mpv \
     tor
 
+{{- end -}}
+
 sudo apt-get upgrade -y
 
 sudo chsh -s "$(which zsh)" "$(whoami)"
+
+
+# nvim
+if ! command -v nvim >/dev/null; then
+    sudo apt install -y ninja-build gettext cmake unzip curl cmake build-essential git
+    git clone -b release-0.9 https://github.com/neovim/neovim || true
+    pushd neovim
+    make CMAKE_BUILD_TYPE=Release
+    sudo make install
+    popd
+fi
 
 function setup_asdf() {
     asdf plugin add python || true
@@ -63,17 +75,6 @@ function setup_asdf() {
     npm install -g npm
 }
 
-# nvim
-if ! command -v nvim >/dev/null; then
-    sudo apt install -y ninja-build gettext cmake unzip curl cmake build-essential git
-    git clone -b release-0.9 https://github.com/neovim/neovim || true
-    pushd neovim
-    make CMAKE_BUILD_TYPE=Release
-    sudo make install
-    popd
-fi
-
-
 # # asdf TODO
 # if ! command -v asdf >/dev/null; then
 #     sudo apt install -y curl git
@@ -81,5 +82,3 @@ fi
 #     export PATH=$PATH:$HOME/.asdf/bin/
 # fi
 # setup_asdf
-
-{{- end -}}

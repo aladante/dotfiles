@@ -1,11 +1,9 @@
-{{ if eq .chezmoi.os "linux" -}}
 #!/bin/bash
-#
-set -eufo pipefail
+
+{{ if eq .chezmoi.os "linux" -}}
 
 sudo apt-get update -y
 sudo apt-get upgrade -y
-sudo apt install curl wget -y
 sudo apt-get dist-upgrade -y
 
 sudo apt-get install -y\

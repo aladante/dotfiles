@@ -17,6 +17,7 @@ sudo apt-get install -y \
     neofetch \
     cargo \
     zsh \
+    ripgrep \
     thermald \
     tmux
 
@@ -61,12 +62,6 @@ function setup_asdf() {
     pip install --upgrade pip
     npm install -g npm
 }
-# asdf
-if ! command -v asdf >/dev/null; then
-    sudo apt install -y curl git
-    git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch master || true
-    export PATH=$PATH:$HOME/.asdf/bin/
-fi
 
 # nvim
 if ! command -v nvim >/dev/null; then
@@ -78,10 +73,4 @@ if ! command -v nvim >/dev/null; then
     popd
 fi
 
-# ripgrep
-if ! command -v rg >/dev/null; then
-    cargo install ripgrep
-fi
-
-setup_asdf
 {{ end -}}

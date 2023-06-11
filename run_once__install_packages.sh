@@ -19,7 +19,6 @@ sudo apt-get install -y \
     cargo \
     zsh \
     thermald \
-    git \
     tmux
 
 sudo apt-get install -y \
@@ -55,7 +54,7 @@ sudo chsh -s "$(which zsh)" "$(whoami)"
 
 # nvim
 if ! command -v nvim >/dev/null; then
-    sudo apt install -y ninja-build gettext cmake unzip curl cmake build-essential
+    sudo apt install -y ninja-build gettext cmake unzip curl cmake build-essential git
     git clone -b release-0.9 https://github.com/neovim/neovim || true
     pushd neovim
     make CMAKE_BUILD_TYPE=Release

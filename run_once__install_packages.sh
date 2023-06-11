@@ -1,5 +1,14 @@
-{{ if eq .type "home" -}}
 #!/bin/bash
+
+set -o pipefail
+
+echo {{ .type_machine }}
+
+sudo apt-get update -y
+sudo apt-get upgrade -y
+
+{{ if eq .type_machine "home" }}
+
 
 sudo apt-get install -y \
     zathura \
@@ -27,12 +36,8 @@ sudo apt-get install -y \
     mpv \
     tor
 
-{{ end -}}
-#!/bin/bash
+{{ end }}
 
-set -o pipefail
-
-sudo apt-get update -y
 
 sudo apt-get install -y \
     software-properties-common \
@@ -46,10 +51,6 @@ sudo apt-get install -y \
     ripgrep \
     thermald \
     tmux
-
-
-
-sudo apt-get upgrade -y
 
 sudo chsh -s "$(which zsh)" "$(whoami)"
 

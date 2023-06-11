@@ -1,4 +1,4 @@
-{{ $type := promptStringOnce . "type of machine" " home OR server " }}
+{{ $type_machine := promptStringOnce . "type of machine" " home OR server " }}
 
 [git]
     autoAdd = true
@@ -11,4 +11,4 @@
 [data]
     name = "Jan"
     email = "ching@chilla.ching"
-    type = {{ $type | quote }}
+    type_machine = {{ $type_machine | quote }}

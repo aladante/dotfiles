@@ -1,5 +1,5 @@
 README.md
-{{- if eq .type "server" -}}
+{{- if eq .type_machine "server" -}}
 .ideavimrc
 .xinitrc
 .Xresources

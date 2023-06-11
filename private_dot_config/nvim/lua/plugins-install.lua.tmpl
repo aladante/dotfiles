@@ -70,7 +70,7 @@ return require('packer').startup(function(use)
     end,
   }
 
-{{- if eq .type "home" }}
+{{- if eq .type_machine "home" }}
   -- neorg managing
   use {
     'nvim-neorg/neorg',

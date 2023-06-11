@@ -36,7 +36,6 @@ sudo apt-get install -y \
     libxss-dev \
     libxcb-screensaver0-dev \
     pulseaudio \
-    cargo \
     bspwm \
     picom \
     polybar \
@@ -48,6 +47,7 @@ sudo apt-get install -y \
     tor
 
 {{- end -}}
+
 
 sudo apt-get upgrade -y
 

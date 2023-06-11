@@ -1,5 +1,5 @@
 README.md
-{{- if (or .server) }}
+{{- if eq .type "server" -}}
 .ideavimrc
 .xinitrc
 .Xresources
@@ -11,7 +11,4 @@ bin
 .config/polybar
 .config/rofi
 .config/sxhkd
-{{- end }}
-{{- if not .home }}
-vnc_server.sh
 {{- end }}

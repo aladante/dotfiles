@@ -18,6 +18,7 @@ sudo apt-get install -y \
     tmux
 
 {{- if eq .type "home" }}
+
 sudo apt-get install -y \
     zathura \
     feh \
@@ -50,7 +51,6 @@ sudo apt-get install -y \
 sudo apt-get upgrade -y
 
 sudo chsh -s "$(which zsh)" "$(whoami)"
-
 
 # nvim
 if ! command -v nvim >/dev/null; then

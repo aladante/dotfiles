@@ -1,4 +1,4 @@
-#!/bin/bash
+#!{{ lookPath "bash" }}
 
 set -o pipefail
 
@@ -6,7 +6,6 @@ sudo apt-get update -y
 
 sudo apt-get install -y \
     software-properties-common \
-    firmware-linux-nonfree \
     python3 \
     python3-pip \
     python3-setuptools \
@@ -18,8 +17,7 @@ sudo apt-get install -y \
     thermald \
     tmux
 
-{{- if eq .type "home" -}}
-
+{{- if eq .type "home" }}
 sudo apt-get install -y \
     zathura \
     feh \
@@ -46,7 +44,7 @@ sudo apt-get install -y \
     mpv \
     tor
 
-{{- end -}}
+{{- end }}
 
 
 sudo apt-get upgrade -y

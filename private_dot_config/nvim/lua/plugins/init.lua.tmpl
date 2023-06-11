@@ -25,5 +25,8 @@ safeRequire 'plugins.autopair'
 -- COLOR SCHEME
 safeRequire 'plugins.colorscheme'
 
+
+{{ if eq .type "home" }}
 -- ORGANIZE TOOL
 safeRequire 'plugins.neorg'
+{{ end }}

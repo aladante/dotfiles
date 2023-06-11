@@ -1,6 +1,6 @@
 #!/bin/bash
 
-{{ if eq .chezmoi.os "linux" -}}
+{{- if eq .chezmoi.os "linux" -}}
 
 set -o pipefail
 
@@ -65,7 +65,7 @@ function setup_asdf() {
 
 # nvim
 if ! command -v nvim >/dev/null; then
-  sudo apt install -y ninja-build gettext cmake unzip curl cmake build-essential git
+    sudo apt install -y ninja-build gettext cmake unzip curl cmake build-essential git
     git clone -b release-0.9 https://github.com/neovim/neovim || true
     pushd neovim
     make CMAKE_BUILD_TYPE=Release
@@ -81,4 +81,5 @@ fi
 #     export PATH=$PATH:$HOME/.asdf/bin/
 # fi
 # setup_asdf
-{{ end -}}
+
+{{- end -}}

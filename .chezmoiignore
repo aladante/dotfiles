@@ -1,20 +1,16 @@
 README.md
-chezmoi.key.age
-{{- if .server }}
-.ssh
-{{- end }}
-{{- if .work }}
-.ssh/known_hosts_managed
-{{- end }}
 {{- if (or .mobile .server) }}
-.config/foot
-.config/i3status
-.config/mutt
-.config/sway
-{{- end }}
-{{- if not .mobile }}
-.termux
-.hushlogin
+.ideavimrc
+.xinitrc
+.Xresources
+bin
+.config/autostart
+.config/bspwm
+.config/dunst
+.config/picom
+.config/polybar
+.config/rofi
+.config/sxhkd
 {{- end }}
 {{- if not .home }}
 vnc_server.sh

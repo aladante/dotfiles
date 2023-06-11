@@ -1,0 +1,5 @@
+require 'plugins-install'
+require 'keybinding'
+require 'settings'
+require 'plugins'
+require 'lsp'

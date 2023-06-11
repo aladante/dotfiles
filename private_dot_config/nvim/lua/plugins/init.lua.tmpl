@@ -1,0 +1,29 @@
+local safeRequire = require('me.util').safeRequire
+
+-- ui
+safeRequire 'plugins.bufferline'
+safeRequire 'plugins.lualine'
+safeRequire 'plugins.telescope'
+safeRequire 'plugins.nvim-tree'
+safeRequire 'plugins.indent_blankline'
+safeRequire 'plugins.gitsigns'
+
+-- lsp support
+safeRequire 'plugins.mason'
+safeRequire 'plugins.tree-sitter'
+safeRequire 'plugins.nvim-cmp'
+safeRequire 'plugins.nvim-dap'
+safeRequire 'plugins.trouble'
+safeRequire 'plugins.null-ls'
+
+-- COMMENTS
+safeRequire 'plugins.comment'
+
+-- pair
+safeRequire 'plugins.autopair'
+
+-- COLOR SCHEME
+safeRequire 'plugins.colorscheme'
+
+-- ORGANIZE TOOL
+safeRequire 'plugins.neorg'

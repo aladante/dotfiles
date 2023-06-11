@@ -1,0 +1,53 @@
+[user]
+	name = ✝ Terry D Davis ✝
+	email = ja.dorresteijn@basenet.com
+[core]
+	editor = nvim
+	whitespace = fix,-indent-with-non-tab,trailing-space,cr-at-eol
+	excludesfile = ~/.gitignore
+	autocrlf = input
+[push]
+	default = simple
+[color]
+	ui = auto
+[color "branch"]
+	current = yellow bold
+	local = green bold
+	remote = cyan bold
+[color "diff"]
+	meta = yellow bold
+	frag = magenta bold
+	old = red bold
+	new = green bold
+	whitespace = red reverse
+[color "status"]
+	added = green bold
+	changed = yellow bold
+	untracked = red bold
+[diff]
+	tool = meld
+[difftool]
+	prompt = false
+[merge]
+	tool = meld
+	conflictstyle = diff3
+[mergetool]
+	prompt = false
+	keepBackup = false
+    cmd = meld "$LOCAL" "$MERGED" "$REMOTE" --output "$MERGED"
+[alias]
+	a = add
+	aa = add --all
+	c = checkout
+	b = branch
+	cam = commit -a -m
+	d = diff
+	p = push
+	st = status
+	sa = config --get-regexp alias
+	ib = --bare init
+	r = reflog
+	rp = remote prune origin
+	rmr = "!git branch -vv | grep ' none]' | awk '{print $1}' | xargs git branch -d"
+	up = "!git add -A && git commit -m \"$(date '+%d-%m-%Y @ %H:%M:%S') ching\" && git push"
+	re = "!git pull && git add -A && git commit --amend  && git push -f"

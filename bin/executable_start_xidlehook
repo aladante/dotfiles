@@ -1,0 +1,13 @@
+#/bin/bash
+
+pkill xidlehook
+
+# Run xidlehook
+xidlehook \
+  --not-when-fullscreen \
+  --not-when-audio \
+  --timer 600 \
+    'lock' \
+    ''\  
+	--timer 3600 \
+    'systemctl suspend' \

@@ -1,0 +1,6 @@
+#!/bin/bash
+
+TMP_BG=${HOME}/dotfiles/extra/lock.png
+
+i3lock -i $TMP_BG -f -n
+

@@ -1,0 +1,199 @@
+[bar/topbar]
+; colors
+background = #1f1f28
+background-alt = #555
+foreground = #dfdfdf
+foreground-alt = #555
+primary = #E1D4AE
+secondary = #e60053
+alert = #B2535B
+
+height = 34
+width = 100% 
+line-size = 3
+fixed-center = true
+wm-restack = bspwm
+tray-position = right
+
+modules-left = bspwm 
+modules-right = pulseaudio temp cpu memory wired-network wireless-network  battery time powermenu
+
+font-0 = "JetBrainsMonoNerdFont Mono=Regular:size=25;4"
+font-1 = "JetBrainsMonoNerdFont Mono:style=Regular:size=14;3"
+
+[bar/external-topbar]
+; colors
+background = #1f1f28
+background-alt = #555
+foreground = #dfdfdf
+foreground-alt = #555
+primary = #E1D4AE
+secondary = #e60053
+alert = #E82424
+
+
+height = 33
+width = 100% 
+line-size = 3
+fixed-center = true
+wm-restack = bspwm
+tray-position = right
+monitor = DP-1
+
+modules-right = temp time  
+modules-left = bspwm 
+
+[module/bspwm]
+type = internal/bspwm
+pin-workspaces = true 
+inline-mode = true
+enable-click = true
+enable-scroll = true
+reverse-scroll = true
+fuzzy-match = true
+format = <label-state>
+format-font = 2
+label-font = 4
+
+ws-icon-1 = 1;
+ws-icon-2 = 2;
+ws-icon-3 = 3;
+ws-icon-4 = 4;
+ws-icon-5 = 5;
+ws-icon-6 = 6; 
+ws-icon-7 = 7;
+ws-icon-8 = 8;
+ws-icon-9 = 9;󰵅
+ws-icon-0 = 0;
+
+label-focused = %icon%
+label-focused-background = #ff5252
+label-focused-padding = 1
+
+label-occupied = %icon%
+label-occupied-background = #2D4F67
+label-occupied-padding = 1
+
+label-empty = %icon%
+label-empty-padding = 1
+
+; urgent = Workspace with urgency hint set
+label-urgent = %icon%
+label-urgent-background = #B2535B
+label-urgent-padding = 1
+
+[module/battery]
+type = internal/battery
+label-charging = "%percentage%%  "
+format-font = 1
+label-font = 2
+label-padding =2
+label-discharging = "%percentage%%  "
+
+label-full = "󰂄"
+format-full-prefix = %{T3}󰂅%{T-}
+
+format-charging = "󰂄 <label-charging>"
+format-discharging = "<ramp-capacity> <label-discharging>"
+
+
+ramp-capacity-0 = %{T3}%{T-}
+ramp-capacity-1 = %{T3}%{T-}
+ramp-capacity-2 = %{T3}%{T-}
+ramp-capacity-3 = %{T3}%{T-}
+ramp-capacity-4 = %{T3}%{T-}
+
+
+full-at = 99
+
+battery = BAT0
+adapter = ADP1
+
+poll-interval = 5
+
+[module/vpn-nordvpn-status]
+format-font = 1
+label-font = 2
+type = custom/script
+exec = ~/dotfiles/polybar/scripts/vpn-nordvpn-status.sh
+interval = 5
+label-padding = 2
+
+[module/temp]
+format-font = 1
+label-font = 2
+type = custom/script
+exec = ~/dotfiles/polybar/scripts/temp.sh
+interval = 5
+label-padding = 2
+
+[module/memory]
+format-font = 1
+label-font = 2
+label-padding = 2
+type = internal/memory
+interval = 2
+label = %percentage_used%%
+label-foreground = ${colors.primary}
+
+
+[module/cpu]
+type = internal/cpu
+interval = 0.5
+format-font = 1
+format = %{O8}<label>%{O20}
+label-font = 2
+label = %percentage%%{O5}%
+
+[module/pulseaudio]
+type = internal/pulseaudio
+sink = alsa_output.pci-0000_00_14.2.analog-stereo
+format-volume = 󰕾%{O10}<label-volume>%{O20}
+label-volume-font = 2
+format-volume-foreground = #ff9d52
+format-muted = %{O10}󰕿%{O20}
+label-muted-font = 2
+format-muted-foreground = #ff9d52
+use-ui-max = true
+interval = 5
+
+[module/wired-network]
+type = internal/network
+interface = eno2
+interval = 1
+format-connected = <label-connected>%{O20}
+label-connected = %downspeed:9%
+label-connected-font = 2
+label-disconnected = 
+
+[module/wireless-network]
+type = internal/network
+interface = wlo1
+interval = 3
+format-connected = <label-connected>%{O20}
+label-connected = %downspeed:9%
+label-connected-font = 2
+label-disconnected = 
+
+[module/time]
+type = internal/date
+interval = 1.0
+time = %I:%M %P
+date = %Y-%m-%d%
+label = %date% %time%
+label-font = 2
+format = %{O10}<label>%{O20}
+
+[module/powermenu]
+type = custom/menu
+menu-0-0 = %{F#ff7575}%{F-}
+menu-0-0-exec = sudo systemctl poweroff
+menu-0-1 = %{F#ffbc75}%{F-}
+menu-0-1-exec = bspc quit
+menu-0-2 = %{F#fff945}%{F-}
+menu-0-2-exec = sudo systemctl reboot
+menu-0-3 = %{F#00bcf5}⏾%{F-}%{O15}
+menu-0-3-exec = sudo systemctl hibernate
+label-open = %{O10}
+label-close = %{F#ff8c8c}%{F-}
+label-separator = %{O5}%{O5}

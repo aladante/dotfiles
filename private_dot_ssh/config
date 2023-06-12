@@ -1,0 +1,3 @@
+Host github.com
+ HostName github.com/orgs/base-CRM
+ IdentityFile ~/.ssh/id_rsa_work

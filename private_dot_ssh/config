@@ -1,3 +1,10 @@
 Host github.com
- HostName github.com/orgs/base-CRM
- IdentityFile ~/.ssh/id_rsa_work
+  user jan-dorresteijn-basecrm
+  HostName github.com/orgs/base-CRM
+  IdentityFile ~/.ssh/id_rsa_work
+
+Host github.com
+  user aladante
+  HostName github.com/orgs/base-CRM
+  IdentityFile ~/.ssh/id_rsa.pub
+

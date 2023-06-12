@@ -7,7 +7,7 @@ echo {{ .type_machine }}
 sudo apt-get update -y
 sudo apt-get upgrade -y
 
-{{ if eq .type_machine "home" }}
+{{ if eq .type_machine "home" "work"}}
 
 
 sudo apt-get install -y \

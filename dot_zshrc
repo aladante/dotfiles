@@ -59,7 +59,7 @@ fi
 
 
 # BINARIES RUST AND GO and node
-export PATH="$PATH:$HOME/.cargo/bin:$HOME/go/bin:$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$HOME/.local/bin:$HOME/bin/"
+export PATH="$PATH:$HOME/.cargo/bin:$HOME/go/bin:$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$HOME/.local/bin:$HOME/.bin/"
 
 alias luamake=${PATH}/workspace/external_repos/lua-language-server/3rd/luamake/luamake
 

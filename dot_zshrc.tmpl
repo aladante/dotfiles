@@ -27,8 +27,13 @@ antigen bundle docker-compose
 antigen bundle terraform
 antigen bundle kubectl
 
+{{- if eq .type_machine  "home" }}
 # Set theme
 antigen theme "clean"
+{{ else  }}
+# Set theme
+antigen theme "fishy"
+{{- end }}
 
 # Apply settings
 antigen apply

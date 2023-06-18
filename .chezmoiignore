@@ -13,3 +13,4 @@ bin
 .config/sxhkd
 .config/mimeapps.list
 {{- end }}
+key.txt.age

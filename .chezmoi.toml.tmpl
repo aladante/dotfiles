@@ -1,5 +1,10 @@
 {{ $type_machine := promptStringOnce . "type of machine" " home OR server " }}
 
+encryption = "age"
+[age]
+    identity = "~/key.txt"
+    recipient = "age1y97tj2ckdju5q34h4jfy0dykdk0nsu6qwf9nktya9sp86w7nuyqqhwr5nl"
+
 [git]
     autoAdd = true
     autoCommit = true

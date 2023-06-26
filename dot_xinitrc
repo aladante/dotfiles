@@ -18,25 +18,13 @@ export THEME=DARK
 
 xrdb -load ~/.Xresources &
 
-function environment() {
-    xset -dpms 	#Turn off DPMS
-    # set mouse speed
-    setxkbmap us
-}
+xset -dpms 	#Turn off DPMS
+# set mouse speed
+setxkbmap us
 
-function services() {
-    start-pulseaudio-x11 &
-    dunst &
-}
+start-pulseaudio-x11 &
+dunst &
 
-function main() {
-    environment
-    services
-    windowManager
-}
 
-function windowManager() {
-    exec bspwm
-}
+exec bspwm
 
-main

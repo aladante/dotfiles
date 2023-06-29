@@ -40,7 +40,9 @@ local servers = {
 	tsserver = {},
 	ansiblels = {},
 	docker_compose_language_service = {},
-	jsonnet_ls = {},
+	jsonnet_ls = {
+		filetypes = { "libsonnet", "jsonnet" },
+	},
 }
 
 vim.diagnostic.config({

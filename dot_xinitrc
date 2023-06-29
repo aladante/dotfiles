@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #Set default shell
-export SHELL=/bin/zsh
+export SHELL=/usr/bin/fish
 # Set default editor
 export EDITOR=nvim
 # Set default browser
@@ -25,6 +25,4 @@ setxkbmap us
 start-pulseaudio-x11 &
 dunst &
 
-
 exec bspwm
-

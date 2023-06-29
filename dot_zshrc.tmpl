@@ -27,7 +27,7 @@ antigen bundle docker-compose
 antigen bundle terraform
 antigen bundle kubectl
 
-{{- if eq .type_machine  "home" }}
+{{- if eq .type_machine  "home" "work" }}
 # Set theme
 antigen theme "clean"
 {{ else  }}
@@ -71,7 +71,8 @@ alias luamake=${PATH}/workspace/external_repos/lua-language-server/3rd/luamake/l
 plugins=(
     git
     kubectl
+    kubectx
     Kube-ps1
     helm
     terraform
-docker-compose)
+    docker-compose)

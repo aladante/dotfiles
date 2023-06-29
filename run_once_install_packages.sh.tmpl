@@ -50,10 +50,16 @@ sudo apt-get install -y \
     ripgrep \
     thermald \
     age \
+    exa \
     jsonnet \
     tmux
 
-sudo chsh -s "$(which zsh)" "$(whoami)"
+sudo chsh -s "$(which fish)" "$(whoami)"
+
+# rust
+if ! command -v cargo >/dev/null; then
+  curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+fi
 
 # nvim
 if ! command -v nvim >/dev/null; then
@@ -64,6 +70,11 @@ if ! command -v nvim >/dev/null; then
     sudo make install
     popd
     sudo apt-get install -y python3-pynvim
+fi
+
+# starship
+if ! command -v starship >/dev/null; then
+  cargo install starship --locked
 fi
 
 function setup_asdf() {

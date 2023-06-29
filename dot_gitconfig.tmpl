@@ -1,6 +1,12 @@
+{{- if eq .type_machine  "work"  }}
 [user]
-	name = ✝ Terry D Davis ✝
-	email = ja.dorresteijn@basenet.com
+	name = Jan Dorresteijn
+	email = janjr@base.nl
+{{ else  }}
+[user]
+	name = l00py
+	email = janjr@dorresteijn.nl
+{{- end }}
 [core]
 	editor = nvim
 	whitespace = fix,-indent-with-non-tab,trailing-space,cr-at-eol

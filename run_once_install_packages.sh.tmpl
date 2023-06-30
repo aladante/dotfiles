@@ -58,13 +58,10 @@ sudo apt-get install -y \
 sudo chsh -s "$(which fish)" "$(whoami)"
 
 {{ if eq .type_machine "home" "work"}}
-## FONT
-if ! command -v nvim >/dev/null; then
-    git clone --depth 1 git@github.com:ryanoasis/nerd-fonts.git || true
-    pushd nerd-fonts
-    ./nerd-fonts/install.sh  JetBrainsMono
-    popd
-fi
+git clone --depth 1 git@github.com:ryanoasis/nerd-fonts.git || true
+pushd nerd-fonts
+./nerd-fonts/install.sh  JetBrainsMono
+popd
 {{ end }}
 
 # SHELL
@@ -95,6 +92,7 @@ fi
 ## kubectl
 if ! command -v kubectl >/dev/null; then
   curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+  sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
 fi
 
 ## kubectx

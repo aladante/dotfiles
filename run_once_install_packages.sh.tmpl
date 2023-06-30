@@ -30,11 +30,8 @@ sudo apt-get install -y \
     picom \
     polybar \
     lm-sensors \
-    xbacklight \
-    gocryptfs \
     fwupd \
     mpv \
-    tor
 
 {{ end }}
 
@@ -60,7 +57,7 @@ sudo chsh -s "$(which fish)" "$(whoami)"
 {{ if eq .type_machine "home" "work"}}
 git clone --depth 1 https://github.com/ryanoasis/nerd-fonts.git || true
 pushd nerd-fonts
-./nerd-fonts/install.sh  JetBrainsMono
+/bin/bash $HOME/nerd-fonts/install.sh  JetBrainsMono
 popd
 {{ end }}
 
@@ -73,7 +70,7 @@ fi
 #$ nvim
 if ! command -v nvim >/dev/null; then
     sudo apt install -y ninja-build gettext cmake unzip curl cmake build-essential 
-    git clone -b release-0.10 https://github.com/neovim/neovim || true
+    git clone -b release-0.9 https://github.com/neovim/neovim || true
     pushd neovim
     make CMAKE_BUILD_TYPE=Release
     sudo make install
@@ -84,7 +81,7 @@ fi
 
 ## starship
 if ! command -v starship >/dev/null; then
-  cargo install starship --locked
+  $HOME/.cargo/bin/cargo install starship --locked
 fi
 
 # KUBERNETES

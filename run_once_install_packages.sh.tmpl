@@ -58,7 +58,7 @@ sudo apt-get install -y \
 sudo chsh -s "$(which fish)" "$(whoami)"
 
 {{ if eq .type_machine "home" "work"}}
-git clone --depth 1 git@github.com:ryanoasis/nerd-fonts.git || true
+git clone --depth 1 https://github.com/ryanoasis/nerd-fonts.git || true
 pushd nerd-fonts
 ./nerd-fonts/install.sh  JetBrainsMono
 popd

@@ -75,6 +75,7 @@ if ! command -v nvim >/dev/null; then
     make CMAKE_BUILD_TYPE=Release
     sudo make install
     popd
+    rm -rf neovim
     # install after to make sure it doesn't install nvim
     sudo apt-get install -y python3-pynvim
 fi
@@ -90,14 +91,17 @@ fi
 if ! command -v kubectl >/dev/null; then
   curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
   sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
+  rm  kubectl
 fi
 
 ## kubectx
 if ! command -v kubectx >/dev/null; then
   curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
   sudo git clone https://github.com/ahmetb/kubectx /opt/kubectx
+  rm -rf kubectx
   sudo ln -s /opt/kubectx/kubectx /usr/local/bin/kubectx
   sudo ln -s /opt/kubectx/kubens /usr/local/bin/kubens
+
 fi
 
 function setup_asdf() {

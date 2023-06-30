@@ -57,6 +57,16 @@ sudo apt-get install -y \
 
 sudo chsh -s "$(which fish)" "$(whoami)"
 
+{{ if eq .type_machine "home" "work"}}
+## FONT
+if ! command -v nvim >/dev/null; then
+    git clone --depth 1 git@github.com:ryanoasis/nerd-fonts.git || true
+    pushd nerd-fonts
+    ./nerd-fonts/install.sh  JetBrainsMono
+    popd
+fi
+{{ end }}
+
 # SHELL
 ## rust
 if ! command -v cargo >/dev/null; then
@@ -88,7 +98,7 @@ if ! command -v kubectl >/dev/null; then
 fi
 
 ## kubectx
-if ! command -v kubectl >/dev/null; then
+if ! command -v kubectx >/dev/null; then
   curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
   sudo git clone https://github.com/ahmetb/kubectx /opt/kubectx
   sudo ln -s /opt/kubectx/kubectx /usr/local/bin/kubectx
@@ -105,6 +115,7 @@ function setup_asdf() {
     pip install --upgrade pip
     npm install -g npm
 }
+
 # # asdf TODO
 # if ! command -v asdf >/dev/null; then
 #     sudo apt install -y curl git

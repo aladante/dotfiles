@@ -61,13 +61,9 @@ pushd nerd-fonts
 popd
 {{ end }}
 
-# SHELL
-## rust
-if ! command -v cargo >/dev/null; then
-  curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-fi
+# TERMINAL
 
-#$ nvim
+## nvim
 if ! command -v nvim >/dev/null; then
     sudo apt install -y ninja-build gettext cmake unzip curl cmake build-essential 
     git clone -b release-0.9 https://github.com/neovim/neovim || true
@@ -80,13 +76,20 @@ if ! command -v nvim >/dev/null; then
     sudo apt-get install -y python3-pynvim
 fi
 
+## rust
+if ! command -v cargo >/dev/null; then
+  curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+fi
+
 ## starship
 if ! command -v starship >/dev/null; then
   $HOME/.cargo/bin/cargo install starship --locked
 fi
 
-# KUBERNETES
+## tmux plugin mamanger
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
+# KUBERNETES
 ## kubectl
 if ! command -v kubectl >/dev/null; then
   curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
@@ -103,6 +106,7 @@ if ! command -v kubectx >/dev/null; then
   sudo ln -s /opt/kubectx/kubens /usr/local/bin/kubens
 
 fi
+
 
 function setup_asdf() {
     asdf plugin add python || true

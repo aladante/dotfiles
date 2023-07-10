@@ -6,7 +6,7 @@
 set fish_greeting                                 # Supresses fish's intro message
 set TERM "xterm-256color"                         # Sets the terminal type
 set EDITOR "nvim"                                 # $EDITOR use Emacs in terminal
-set VISUAL "nvim"              # $VISUAL use Emacs in GUI mode
+set VISUAL "nvim"                                 # $VISUAL use Emacs in GUI mode
 
 ### "less" as manpager
 set -x MANPAGER "less"

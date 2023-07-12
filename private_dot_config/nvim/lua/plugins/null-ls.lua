@@ -28,12 +28,7 @@ null_ls.setup({
 		null_ls.builtins.formatting.black,
 		null_ls.builtins.formatting.google_java_format,
 		null_ls.builtins.formatting.jsonnetfmt,
-		null_ls.builtins.formatting.prettier.with({
-			filetypes = {
-				"graphql",
-				"yaml",
-			},
-		}),
+		null_ls.builtins.formatting.prettier,
 		-- DIAGNOSTICS
 		null_ls.builtins.diagnostics.hadolint,
 	},

@@ -100,9 +100,12 @@ function setup_asdf() {
 }
 
 # # asdf TODO
-# if ! command -v asdf >/dev/null; then
-#     sudo apt install -y curl git
-#     git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch master || true
-#     export PATH=$PATH:$HOME/.asdf/bin/
-# fi
-# setup_asdf
+if ! command -v asdf >/dev/null; then
+    sudo apt install -y curl git
+    git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch master || true
+    export PATH=$PATH:$HOME/.asdf/bin/
+    mkdir -p ~/.config/fish/completions
+    ln -s ~/.asdf/completions/asdf.fish ~/.config/fish/completions
+fi
+
+setup_asdf

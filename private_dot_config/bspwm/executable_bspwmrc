@@ -19,7 +19,7 @@ else
 fi
 
 # Set background
-feh --bg-center $HOME/dotfiles/extra/background.png &
+feh --bg-center $HOME/images/background/background.png &
 
 # launch polybar_launch
 sxhkd &

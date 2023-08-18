@@ -34,13 +34,6 @@ sudo apt-get install -y \
 
 sudo chsh -s "$(which fish)" "$(whoami)"
 
-{{ if eq .type_machine "home" "work"}}
-git clone --depth 1 https://github.com/ryanoasis/nerd-fonts.git || true
-pushd nerd-fonts
-/bin/bash $HOME/nerd-fonts/install.sh  JetBrainsMono
-popd
-{{ end }}
-
 # TERMINAL
 
 ## nvim

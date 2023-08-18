@@ -115,7 +115,7 @@ poll-interval = 5
 format-font = 1
 label-font = 2
 type = custom/script
-exec = ~/dotfiles/polybar/scripts/vpn-nordvpn-status.sh
+exec = ~/.config/polybar/scripts/vpn-nordvpn-status.sh
 interval = 5
 label-padding = 2
 
@@ -123,7 +123,7 @@ label-padding = 2
 format-font = 1
 label-font = 2
 type = custom/script
-exec = ~/dotfiles/polybar/scripts/temp.sh
+exec = ~/.config/polybar/scripts/temp.sh
 interval = 5
 label-padding = 2
 

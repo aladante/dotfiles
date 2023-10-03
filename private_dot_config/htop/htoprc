@@ -3,16 +3,10 @@
 fields=0 48 17 18 38 39 40 2 46 47 49 1
 sort_key=46
 sort_direction=1
-<<<<<<< HEAD
-tree_sort_key=46
-tree_sort_direction=1
-||||||| f7c86ed
 tree_sort_key=47
 tree_sort_direction=-1
-=======
 tree_sort_key=1
 tree_sort_direction=1
->>>>>>> 063ea8cec6c5314d8e6af5a9610cca276fa84aef
 hide_kernel_threads=1
 hide_userland_threads=1
 shadow_other_users=0

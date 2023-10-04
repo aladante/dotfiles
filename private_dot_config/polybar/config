@@ -18,8 +18,8 @@ tray-position = right
 modules-left = bspwm 
 modules-right = pulseaudio temp cpu memory wired-network wireless-network  battery time powermenu
 
-font-0 = "JetBrainsMonoNerdFont Mono=Regular:size=25;4"
-font-1 = "JetBrainsMonoNerdFont Mono:style=Regular:size=14;3"
+font-0 = "jetBrainsMono Nerd Font Mono=Regular:size=25;4"
+font-1 = "jetBrainsMono Nerd Font Mono:style=Regular:size=14;3"
 
 [bar/external-topbar]
 ; colors

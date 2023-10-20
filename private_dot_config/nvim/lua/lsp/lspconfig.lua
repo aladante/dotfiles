@@ -43,6 +43,7 @@ local servers = {
 	jsonnet_ls = {
 		filetypes = { "libsonnet", "jsonnet" },
 	},
+	rust_analyzer = {},
 }
 
 vim.diagnostic.config({

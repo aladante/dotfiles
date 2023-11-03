@@ -6,7 +6,6 @@ safeRequire 'plugins.lualine'
 safeRequire 'plugins.telescope'
 safeRequire 'plugins.nvim-tree'
 safeRequire 'plugins.indent_blankline'
-safeRequire 'plugins.gitsigns'
 
 -- lsp support
 safeRequire 'plugins.mason'
@@ -22,11 +21,15 @@ safeRequire 'plugins.comment'
 -- pair
 safeRequire 'plugins.autopair'
 
+
+{{- if eq .type_machine  "home" "work" }}
+
 -- COLOR SCHEME
 safeRequire 'plugins.colorscheme'
 
-
-{{- if eq .type_machine  "home" "work" }}
 -- ORGANIZE TOOL
 safeRequire 'plugins.neorg'
+
+-- lsp support
+safeRequire 'plugins.gitsigns'
 {{- end }}

@@ -55,9 +55,6 @@ return require('packer').startup(function(use)
   use { 'mfussenegger/nvim-jdtls' }
   use { 'mfussenegger/nvim-dap' }
 
-  -- Theme
-  use { 'rebelot/kanagawa.nvim' }
-
   -- ui
   use 'kyazdani42/nvim-tree.lua'
   use 'lukas-reineke/indent-blankline.nvim'
@@ -69,12 +66,16 @@ return require('packer').startup(function(use)
   }
 
 {{- if eq .type_machine "home" "work"}}
+  -- Theme
+  use { 'rebelot/kanagawa.nvim' }
+
   -- neorg managing
   use {
     'nvim-neorg/neorg',
     run = ':Neorg sync-parsers', -- This is the important bit!
     requires = 'nvim-lua/plenary.nvim',
   }
+
   -- Git
   use { 'lewis6991/gitsigns.nvim', requires = { 'nvim-lua/plenary.nvim' } }
   use { 'NeogitOrg/neogit', requires = 'nvim-lua/plenary.nvim' }

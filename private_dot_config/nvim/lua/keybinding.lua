@@ -55,7 +55,7 @@ for i = 1, 9 do
 end
 
 -- Package manager
-remap("n", "<Leader>u", "<cmd>PackerUpdate<cr>", bufopts, "update packeges")
+remap("n", "<Leader>u", "<cmd>Lazy<cr>", bufopts, "update packeges")
 
 -- disable search highlighting by pressing enter
 remap("n", "<cr>", "<cmd>:nohlsearch<cr><cr>")

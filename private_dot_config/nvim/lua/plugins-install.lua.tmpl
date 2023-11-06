@@ -1,84 +1,93 @@
-local install_path = vim.fn.stdpath 'data' .. '/site/pack/packer/start/packer.nvim'
-if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
-  vim.cmd('!git clone https://github.com/wbthomason/packer.nvim ' .. install_path)
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", -- latest stable release
+    lazypath,
+  })
 end
+vim.opt.rtp:prepend(lazypath)
 
-return require('packer').startup(function(use)
-  -- Packer can manage itself as an optional plugin
-  use { 'wbthomason/packer.nvim' }
 
-  use { 'christoomey/vim-tmux-navigator' }
-  use { 'hoob3rt/lualine.nvim' }
-  use {
+
+return require('lazy').setup({
+
+    'christoomey/vim-tmux-navigator',
+    'hoob3rt/lualine.nvim', 
+   {
     'akinsho/nvim-bufferline.lua',
-    tag = '*',
-    requires = 'kyazdani42/nvim-web-devicons',
-  }
+    dependencies = 'kyazdani42/nvim-web-devicons',
+  },
 
-  use { 'nvim-telescope/telescope.nvim' }
-  use { 'nvim-lua/plenary.nvim' }
-  use { 'kyazdani42/nvim-web-devicons' }
+    'nvim-telescope/telescope.nvim',
+    'nvim-lua/plenary.nvim',
+    'kyazdani42/nvim-web-devicons',
 
 
   -- LSP
-  use {
+   {
     'williamboman/mason.nvim',
     'williamboman/mason-lspconfig.nvim',
     'neovim/nvim-lspconfig',
-  }
-  use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
-  use { 'nvim-lua/lsp-status.nvim' }
-  use { 'folke/trouble.nvim' }
-  use { 'ray-x/lsp_signature.nvim' }
-  use { 'jose-elias-alvarez/null-ls.nvim', requires = { 'nvim-lua/plenary.nvim' } }
+  },
+   { 'nvim-treesitter/nvim-treesitter', build = ':TSUpdate' },
+   'nvim-lua/lsp-status.nvim',
+   'folke/trouble.nvim',
+   'ray-x/lsp_signature.nvim',
+
+   { 'jose-elias-alvarez/null-ls.nvim', dependencies = { 'nvim-lua/plenary.nvim' } },
 
   -- COMMENTS
-  use { 'numToStr/Comment.nvim' }
+   'numToStr/Comment.nvim',
 
   -- cmp
-  use { 'hrsh7th/cmp-nvim-lsp' }
-  use { 'hrsh7th/cmp-buffer' }
-  use { 'hrsh7th/cmp-path' }
-  use { 'hrsh7th/cmp-cmdline' }
-  use { 'hrsh7th/nvim-cmp' }
+   'hrsh7th/cmp-nvim-lsp',
+   'hrsh7th/cmp-buffer',
+   'hrsh7th/cmp-path',
+   'hrsh7th/cmp-cmdline',
+   'hrsh7th/nvim-cmp',
 
   -- pair
-  use { 'windwp/nvim-autopairs' }
+   'windwp/nvim-autopairs',
 
   -- snippets
-  use { 'hrsh7th/cmp-vsnip' }
-  use { 'L3MON4D3/LuaSnip' }
-  use { 'saadparwaiz1/cmp_luasnip' }
-  use { 'rafamadriz/friendly-snippets' }
+   'hrsh7th/cmp-vsnip',
+   'L3MON4D3/LuaSnip',
+   'saadparwaiz1/cmp_luasnip',
+   'rafamadriz/friendly-snippets',
 
   -- Java
-  use { 'mfussenegger/nvim-jdtls' }
-  use { 'mfussenegger/nvim-dap' }
+   'mfussenegger/nvim-jdtls',
+   'mfussenegger/nvim-dap',
 
   -- ui
-  use 'kyazdani42/nvim-tree.lua'
-  use 'lukas-reineke/indent-blankline.nvim'
-  use {
+   'kyazdani42/nvim-tree.lua',
+   'lukas-reineke/indent-blankline.nvim',
+
+   {
     'folke/which-key.nvim',
     config = function()
       require('which-key').setup()
     end,
-  }
+  },
 
 {{- if eq .type_machine "home" "work"}}
   -- Theme
-  use { 'rebelot/kanagawa.nvim' }
+  'rebelot/kanagawa.nvim', 
 
   -- neorg managing
-  use {
+   {
     'nvim-neorg/neorg',
-    run = ':Neorg sync-parsers', -- This is the important bit!
-    requires = 'nvim-lua/plenary.nvim',
-  }
+    build = ':Neorg sync-parsers', -- This is the important bit!
+    dependencies = 'nvim-lua/plenary.nvim',
+  },
 
   -- Git
-  use { 'lewis6991/gitsigns.nvim', requires = { 'nvim-lua/plenary.nvim' } }
-  use { 'NeogitOrg/neogit', requires = 'nvim-lua/plenary.nvim' }
+   { 'lewis6991/gitsigns.nvim', dependencies = { 'nvim-lua/plenary.nvim' } },
+   { 'NeogitOrg/neogit', dependencies = 'nvim-lua/plenary.nvim' },
 {{- end }}
 
-end)
+})

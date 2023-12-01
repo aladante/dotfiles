@@ -8,10 +8,11 @@ SECOND_MONITOR=$(xrandr | grep -w "connected" | awk '{i++}i==2'| awk '{print $1}
 
 Configure Monitors
 if [ "$(xrandr | grep -sw 'connected' | wc -l)" = "2" ]; then
-	xrandr --output $SECOND_MONITOR --rotate left
+	# xrandr --output $SECOND_MONITOR --rotate left
 	bspc monitor $(bspc query -M | sed -n 1p) -d 1 2 3 4 5
 	bspc monitor $(bspc query -M | sed -n 2p) -d 6 7 8 9 0
 	#Set Monitors Side and output 
+	xrandr -s 1920x1200
 	xrandr --output $SECOND_MONITOR --$SECOND_MONITOR_SIDE-of $PRINCIPAL 
 else
 	xrandr -s 1920x1200

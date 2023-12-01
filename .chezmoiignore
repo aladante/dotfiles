@@ -1,5 +1,7 @@
 README.md
+ 
 {{- if eq .type_machine "server" -}}
+
 .ideavimrc
 .xinitrc
 .Xresources
@@ -13,4 +15,5 @@ bin
 .config/sxhkd
 .config/mimeapps.list
 {{- end }}
+
 key.txt.age

@@ -8,15 +8,14 @@ SECOND_MONITOR=$(xrandr | grep -w "connected" | awk '{i++}i==2'| awk '{print $1}
 
 Configure Monitors
 if [ "$(xrandr | grep -sw 'connected' | wc -l)" = "2" ]; then
-	# xrandr --output $SECOND_MONITOR --rotate left
-	bspc monitor $(bspc query -M | sed -n 1p) -d 1 2 3 4 5
-	bspc monitor $(bspc query -M | sed -n 2p) -d 6 7 8 9 0
-	#Set Monitors Side and output 
-	xrandr -s 1920x1200
-	xrandr --output $SECOND_MONITOR --$SECOND_MONITOR_SIDE-of $PRINCIPAL 
+    # xrandr --output $SECOND_MONITOR --rotate left
+    bspc monitor $(bspc query -M | sed -n 1p) -d 1 2 3 4 5
+    bspc monitor $(bspc query -M | sed -n 2p) -d 6 7 8 9 0
+    #Set Monitors Side and output
+    xrandr --output $SECOND_MONITOR --$SECOND_MONITOR_SIDE-of $PRINCIPAL
 else
-	xrandr -s 1920x1200
-	bspc monitor -d 1 2 3 4 5 6 7 8 9 0
+    xrandr -s 1920x1200
+    bspc monitor -d 1 2 3 4 5 6 7 8 9 0
 fi
 
 # Set background
@@ -25,8 +24,8 @@ feh --bg-center $HOME/images/background/background.png &
 # launch polybar_launch
 sxhkd &
 start_xidlehook &
-picom -f & 
-polybar_launch & 
+picom -f &
+polybar_launch &
 
 bspc config border_width    	1
 bspc config window_gap		    14
@@ -43,4 +42,3 @@ bspc rule -a discord desktop='^9'
 bspc rule -a Slack desktop='^9'
 bspc rule -a Signal desktop='^9'
 bspc rule -a TelegramDesktop desktop='^9'
-
